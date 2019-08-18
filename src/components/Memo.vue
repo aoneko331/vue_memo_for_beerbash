@@ -3,7 +3,7 @@
     <PageTitle underline>
       Memo App
     </PageTitle>
-    <IconButton size="ex-large" iconName="pencil">
+    <IconButton size="large" iconName="plus-square">
       新規作成
     </IconButton>
     <MemoItem v-for="(item, index) in items" :key="index" :memo="item" />

@@ -1,12 +1,13 @@
 <template>
   <Button class="icon-button" :size="size" :color="color">
     <!-- いいかんじにアイコン指定 -->
+    <font-awesome-icon :icon="iconName" />
     <slot />
   </Button>
 </template>
 
 <script>
-import Button from '@/components/atom/Button'
+import Button from '@/components/atoms/Button'
 
 export default {
   name: 'IconButton',
@@ -19,15 +20,15 @@ export default {
     size: {
       type: String,
       default: 'medium',
-      validator() {
-        // Buttonとおなじやつ
+      validator(val) {
+        return ['large', 'medium', 'small'].includes(val)
       },
     },
     color: {
       type: String,
-      default: 'black',
-      validator() {
-        // Buttonとおなじ
+      default: 'primary',
+      validator(val) {
+        ['primary', 'dark', 'light', 'accent'].includes(val)
       },
     },
     iconName: {

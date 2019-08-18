@@ -12,8 +12,8 @@ export default {
     underline: {
       type: Boolean,
       default: false,
-    }
-  }
+    },
+  },
 }
 </script>>
 

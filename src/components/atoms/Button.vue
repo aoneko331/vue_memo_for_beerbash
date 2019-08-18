@@ -12,23 +12,22 @@ export default {
     size: {
       type: String,
       default: 'medium',
-      validator: (val) => {
-        //ふくむ
-        return []
+      validator(val) {
+        return ['large', 'medium', 'small'].includes(val)
       },
     },
     color: {
-      type: 'string',
-      default: 'black',
-      validator() { 
-        // ふくむ
+      type: String,
+      default: 'primary',
+      validator(val) {
+        ['primary', 'dark', 'light', 'accent'].includes(val)
       },
     },
   },
 
   computed: {
     classes() {
-      return [`btn-s-${size}`, `btn-c-${color}`]
+      return [`btn-s-${this.size}`, `btn-c-${this.color}`]
     },
   },
 }

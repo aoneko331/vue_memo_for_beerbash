@@ -1,27 +1,22 @@
 <template>
   <div id="app">
-    <Memo />
+    <Home />
   </div>
 </template>
 
 <script>
-import Memo from './components/Memo.vue'
+import Home from './views/Home.vue'
 
 export default {
   name: 'app',
   components: {
-    Memo,
+    Home,
   },
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  background-color: $rightPrimary;
 }
 </style>
