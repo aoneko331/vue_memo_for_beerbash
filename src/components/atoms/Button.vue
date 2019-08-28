@@ -41,6 +41,7 @@ export default {
   justify-content: center;
   align-items: center;
   font-weight: bold;
+  font-size: 14px;
 }
 
 $height: (

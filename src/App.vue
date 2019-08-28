@@ -17,7 +17,17 @@ export default {
 
 <style lang="scss" scoped>
 #app {
-  background-color: $rightPrimary;
   position: relative;
+  width: 100%;
+  border: 1px solid $rightPrimary;
+}
+</style>
+
+<style lang="scss">
+body {
+  margin: 0;
+}
+html {
+  background-color: $rightPrimary;
 }
 </style>

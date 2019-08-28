@@ -58,6 +58,10 @@ export default {
       type: Object,
       required: false,
     },
+    index: {
+      type: Number,
+      required: false,
+    },
   },
 
   computed: {
@@ -79,7 +83,7 @@ export default {
     },
 
     save() {
-      this.$emit('save-memo', this.memoItem)
+      this.$emit('save-memo', this.memoItem, this.index)
       this.closeEditModal()
     },
   },
@@ -104,6 +108,7 @@ export default {
 .memo-item {
   border: 1px solid $devider;
   padding: 15px;
+  margin: 10px 0;
 }
 
 .modal-overlay {
@@ -124,7 +129,9 @@ export default {
   background-color: #FFF;
   z-index: 150;
   width: 90%;
+  height: 90%;
   position: absolute;
+  overflow: auto;
 }
 
 .title {

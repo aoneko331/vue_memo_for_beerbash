@@ -18,7 +18,8 @@ export default {
 
 <style lang="scss" scoped>
 .home {
-  width: 60vw;
+  width: 80vw;
   background-color: #FFF;
+  margin: 40px auto;
 }
 </style>
