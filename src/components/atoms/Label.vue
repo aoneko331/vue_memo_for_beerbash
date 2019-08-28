@@ -1,7 +1,7 @@
 <template>
-  <span>
+  <p class="atom-label">
     <slot />
-  </span>
+  </p>
 </template>
 
 <script>
@@ -11,5 +11,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.atom-label {
+  font-size: 16px;
+  font-weight: bold;
+}
 </style>

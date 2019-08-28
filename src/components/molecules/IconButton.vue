@@ -1,7 +1,6 @@
 <template>
-  <Button class="icon-button" :size="size" :color="color">
-    <!-- いいかんじにアイコン指定 -->
-    <font-awesome-icon :icon="iconName" />
+  <Button class="icon-button" :size="size" :color="color" v-on="$listeners">
+    <font-awesome-icon :icon="icon" class="button-icon" />
     <slot />
   </Button>
 </template>
@@ -28,7 +27,7 @@ export default {
       type: String,
       default: 'primary',
       validator(val) {
-        ['primary', 'dark', 'light', 'accent'].includes(val)
+        return ['primary', 'dark', 'light', 'accent'].includes(val)
       },
     },
     iconName: {
@@ -39,9 +38,21 @@ export default {
 
   computed: {
     icon() {
-      // いいかんじにアイコン指定できるようにする
-      return ''
+      return [`far`, `${this.iconName}`]
     },
   },
 }
 </script>
+
+<style lang="scss" scoped>
+.icon-button {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-icon {
+  margin-right: 10px;
+}
+</style>

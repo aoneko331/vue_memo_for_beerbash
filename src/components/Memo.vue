@@ -15,8 +15,6 @@ import PageTitle from '@/components/atoms/PageTitle'
 import IconButton from '@/components/molecules/IconButton'
 import MemoItem from '@/components/molecules/MemoItem'
 
-import { mapActions, mapState } from 'vuex'
-
 export default {
   name: 'Memo',
 
@@ -27,11 +25,12 @@ export default {
   },
 
   computed: {
-    ...mapState('item', 'items'),
+    items() {
+      return this.$store.state.memoItems
+    },
   },
 
   methods: {
-    ...mapActions('item', ['fetch']),
   },
 
   created() {

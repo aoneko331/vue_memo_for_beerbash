@@ -18,5 +18,6 @@ export default {
 <style lang="scss" scoped>
 #app {
   background-color: $rightPrimary;
+  position: relative;
 }
 </style>

@@ -2,7 +2,7 @@
   <div class="page-title">
     <slot />
   </div>
-</template>>
+</template>
 
 <script>
 export default {
@@ -18,5 +18,15 @@ export default {
 </script>>
 
 <style lang="scss" scoped>
+.page-title {
+  width: 100%;
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 28px;
+  font-weight: bold;
+  color: $darkPrimary;
+}
 
 </style>

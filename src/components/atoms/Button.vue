@@ -1,5 +1,5 @@
 <template>
-  <div class="atom-button" v-on="$listener" :class="classes">
+  <div class="atom-button" v-on="$listeners" :class="classes">
     <slot />
   </div>
 </template>>
@@ -8,7 +8,7 @@
 export default {
   name: 'Button',
 
-  porps: {
+  props: {
     size: {
       type: String,
       default: 'medium',
@@ -20,7 +20,7 @@ export default {
       type: String,
       default: 'primary',
       validator(val) {
-        ['primary', 'dark', 'light', 'accent'].includes(val)
+        return ['primary', 'dark', 'light', 'accent'].includes(val)
       },
     },
   },
@@ -34,5 +34,52 @@ export default {
 </script>>
 
 <style lang="scss" scoped>
+.atom-button {
+  border: none;
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+}
 
+$height: (
+  large: 45px,
+  medium: 40px,
+  small: 30px,
+);
+
+$minWidth: (
+  large: 240px,
+  medium: 240px,
+  small: 200px,
+);
+
+$bgcolors: (
+  primary: $primary,
+  dark: $darkPrimary,
+  light: $rightPrimary,
+  accent: $accent,
+);
+
+$fontcolors: (
+  primary: $lightText,
+  dark: $lightText,
+  light: $text,
+  accent: $text,
+);
+
+@each $key, $value in $height {
+  .btn-s-#{$key} {
+    height: #{$value};
+    min-width: map-get($minWidth, #{$key})
+  }
+}
+
+@each $key, $value in $bgcolors {
+  .btn-c-#{$key} {
+    background-color: #{$value};
+    color: map-get($fontcolors, #{$key})
+  }
+}
 </style>
