@@ -39,6 +39,31 @@ storiesOf('components/molecules/MemoItem', module)
     }
   )
   .add(
+    '選択時',
+    () => ({
+      data() {
+        return {
+          memo: {
+            title: 'サンプルメモ',
+            content: 'これはサンプルです。これはサンプルです。これはサンプルです。これはサンプルです。これはサンプルです。これはサンプルです。これはサンプルです。',
+          },
+        }
+      },
+      components: { MemoItem },
+      template: `
+        <MemoItem :memo="memo" ref="index" />
+      `,
+      mounted() {
+        this.$refs.index.isSettingOpen = true
+      },
+    }),
+    {
+      info: {
+        summary: 'メモ編集モーダル',
+      },
+    }
+  )
+  .add(
     '編集時',
     () => ({
       data() {
