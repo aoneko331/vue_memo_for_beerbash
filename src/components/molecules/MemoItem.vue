@@ -18,10 +18,10 @@
     </modal>
     <div class="memo-item" @click="openSetting">
       <div class="overlay" v-if="isSettingOpen" @click.stop="closeSetting">
-        <IconButton color="primary" iconName="save" @click="openEditModal">
+        <IconButton size="small" color="primary" iconName="save" @click="openEditModal">
           編集
         </IconButton>
-        <IconButton color="accent" iconName="save" @click="deleteMemo" class="delete-button">
+        <IconButton size="small" color="accent" iconName="save" @click="deleteMemo" class="delete-button">
           削除
         </IconButton>
       </div>
@@ -100,6 +100,8 @@ export default {
     save() {
       this.$emit('save-memo', this.memoItem, this.index)
       this.closeEditModal()
+      this.title = ''
+      this.content = ''
     },
 
     deleteMemo() {

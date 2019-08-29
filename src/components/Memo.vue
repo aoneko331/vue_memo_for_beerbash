@@ -73,6 +73,8 @@ export default {
     createMemo() {
       this.$store.dispatch('create', { title: this.title, content: this.content })
       this.closeCreateModal()
+      this.title = ''
+      this.content = ''
     },
     deleteMemo(memo, index) {
       this.$store.dispatch('delete', { memo, index })
