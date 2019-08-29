@@ -31,8 +31,8 @@ const storeProps = {
         title: 'sample3',
         content: 'さんぷるめもさんぷるめもさんぷるめもさんぷるめもさんぷるめも',
       },
-    ]
-  }
+    ],
+  },
 }
 
 storiesOf('components/Memo', module)
@@ -43,37 +43,12 @@ storiesOf('components/Memo', module)
       store: new Vuex.Store(storeProps),
       components: { Memo },
       template: `
-          <Memo :memo="memo" />
+          <Memo />
         `,
     }),
     {
       info: {
         summary: 'メモ表示',
-      },
-    }
-  )
-  .add(
-    '編集時',
-    () => ({
-      data() {
-        return {
-          memo: {
-            title: 'サンプルメモ',
-            content: 'これはサンプルです。これはサンプルです。これはサンプルです。これはサンプルです。これはサンプルです。これはサンプルです。これはサンプルです。',
-          },
-        }
-      },
-      components: { Memo },
-      template: `
-        <Memo :memo="memo" ref="index" />
-      `,
-      mounted() {
-        this.$refs.index.openEditModal()
-      },
-    }),
-    {
-      info: {
-        summary: 'メモ編集モーダル',
       },
     }
   )

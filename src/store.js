@@ -41,5 +41,8 @@ export default new Vuex.Store({
     create({ commit }, val) {
       commit('CREATE', val)
     },
+    delete({ commit }, val) {
+      commit('DELETE', val)
+    },
   },
 })

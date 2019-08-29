@@ -130,6 +130,7 @@ export default {
   padding: 15px;
   margin: 10px 0;
   position: relative;
+  min-height: 100px;
 }
 
 .title {

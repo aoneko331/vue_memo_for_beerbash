@@ -1,8 +1,8 @@
 <template>
   <div class="main-container">
-    <modal :name="`create-${index}`" width="90%" height="70%" class="create-modal">
+    <modal :name="`create-modal`" width="90%" height="70%" class="create-modal">
       <div class="content">
-        <font-awesome-icon :icon="['far', 'window-close']" size="2x" class="close-button" @click="closeEditModal" />
+        <font-awesome-icon :icon="['far', 'window-close']" size="2x" class="close-button" @click="closeCreateModal" />
         <Label class="title-label">
           タイトル
         </Label>
@@ -11,7 +11,7 @@
           本文
         </Label>
         <Textarea v-model="content" class="content-input" placeholder="本文"/>
-        <IconButton class="save-button" color="primary" iconName="save" @click="save">
+        <IconButton class="save-button" color="primary" iconName="save" @click="createMemo">
           保存
         </IconButton>
       </div>
@@ -62,10 +62,10 @@ export default {
 
   methods: {
     openCreateModal() {
-      this.$modal.show(`create-${this.index}`)
+      this.$modal.show(`create-modal`)
     },
     closeCreateModal() {
-      this.$modal.hide(`create-${this.index}`)
+      this.$modal.hide(`create-modal`)
     },
     saveMemo(memo, index) {
       this.$store.dispatch('save', { memo, index })
@@ -74,7 +74,7 @@ export default {
       this.$store.dispatch('create', { title: this.title, content: this.content })
       this.closeCreateModal()
     },
-    deleteMemo() {
+    deleteMemo(memo, index) {
       this.$store.dispatch('delete', { memo, index })
     }
   },
