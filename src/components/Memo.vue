@@ -1,30 +1,28 @@
 <template>
   <div class="main-container">
-    <div class="modal-overlay" v-if="isModalOpen">
-      <div class="create-modal">
-        <div class="content">
-          <font-awesome-icon :icon="['far', 'window-close']" size="2x" class="close-button" @click="closeCreateModal" />
-          <Label class="title-label">
-            タイトル
-          </Label>
-          <Input v-model="title" class="title-input" placeholder="タイトル" />
-          <Label class="content-label">
-            本文
-          </Label>
-          <Textarea v-model="content" class="content-input" placeholder="本文"/>
-          <IconButton class="save-button" color="primary" iconName="save" @click="createMemo">
-            保存
-          </IconButton>
-        </div>
+    <modal :name="`create-${index}`" width="90%" height="70%" class="create-modal">
+      <div class="content">
+        <font-awesome-icon :icon="['far', 'window-close']" size="2x" class="close-button" @click="closeEditModal" />
+        <Label class="title-label">
+          タイトル
+        </Label>
+        <Input v-model="title" class="title-input" placeholder="タイトル" />
+        <Label class="content-label">
+          本文
+        </Label>
+        <Textarea v-model="content" class="content-input" placeholder="本文"/>
+        <IconButton class="save-button" color="primary" iconName="save" @click="save">
+          保存
+        </IconButton>
       </div>
-    </div>
+    </modal>
     <PageTitle underline class="page-title">
       Memo App
     </PageTitle>
     <IconButton size="large" iconName="plus-square" @click="openCreateModal">
       新規作成
     </IconButton>
-    <MemoItem v-for="(item, index) in items" :key="index" :memo="item" :index="index" @save-memo="saveMemo" />
+    <MemoItem v-for="(item, index) in items" :key="index" :memo="item" :index="index" @save-memo="saveMemo" @delete-memo="deleteMemo" />
   </div>
 </template>
 
@@ -64,10 +62,10 @@ export default {
 
   methods: {
     openCreateModal() {
-      this.isModalOpen = true
+      this.$modal.show(`create-${this.index}`)
     },
     closeCreateModal() {
-      this.isModalOpen = false
+      this.$modal.hide(`create-${this.index}`)
     },
     saveMemo(memo, index) {
       this.$store.dispatch('save', { memo, index })
@@ -76,6 +74,9 @@ export default {
       this.$store.dispatch('create', { title: this.title, content: this.content })
       this.closeCreateModal()
     },
+    deleteMemo() {
+      this.$store.dispatch('delete', { memo, index })
+    }
   },
 
   created() {
@@ -87,29 +88,6 @@ export default {
 <style lang="scss" scoped>
 .main-container {
   padding: 15px;
-}
-
-.modal-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 100;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.3);
-  display: flex;
-  flex-flow: row;
-  justify-content: center;
-  align-items: center;
-}
-
-.create-modal {
-  background-color: #FFF;
-  z-index: 150;
-  width: 90%;
-  height: 90%;
-  position: absolute;
-  overflow: auto;
 }
 
 .title {
@@ -145,5 +123,9 @@ export default {
 
 .page-title {
   padding: 15px 0;
+}
+
+.create-modal /deep/.v--modal-box {
+  overflow: auto;
 }
 </style>
